@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:z_fooder_rich/circleImage.dart';
-import 'package:z_fooder_rich/fooderlich_theme.dart';
+
+import '../fooderlich_theme.dart';
+import 'circle_image.dart';
 
 class AuthorCard extends StatefulWidget {
-  // 1
   final String authorName;
   final String title;
   final ImageProvider? imageProvider;
@@ -24,22 +24,18 @@ class _AuthorCardState extends State<AuthorCard> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: Replace return Container(...);
     return Container(
       padding: const EdgeInsets.all(16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // 1
           Row(
             children: [
               CircleImage(
                 imageProvider: widget.imageProvider,
                 imageRadius: 28,
               ),
-              // 2
               const SizedBox(width: 8),
-              // 3
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -56,18 +52,15 @@ class _AuthorCardState extends State<AuthorCard> {
             ],
           ),
           IconButton(
-              // 4
-              icon: Icon(_isFavorited ? Icons.favorite : Icons.favorite_border),
-              iconSize: 30,
-              color: Colors.red[400],
-              // 5
-              onPressed: () {
-                // const snackBar = SnackBar(content: Text('Favorite Pressed'));
-                // ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                setState(() {
-                  _isFavorited = !_isFavorited;
-                });
-              }),
+            icon: Icon(_isFavorited ? Icons.favorite : Icons.favorite_border),
+            iconSize: 30,
+            color: Colors.red[400],
+            onPressed: () {
+              setState(() {
+                _isFavorited = !_isFavorited;
+              });
+            },
+          ),
         ],
       ),
     );
